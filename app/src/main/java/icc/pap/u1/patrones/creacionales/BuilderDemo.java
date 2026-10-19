@@ -29,6 +29,6 @@ public class BuilderDemo {
                 .setRefrigeracionLiquida(false)
                 .build();
 
-        pcOficina.mostrarEspecificaciones();
+            pcOficina.mostrarEspecificaciones();
     }
 }

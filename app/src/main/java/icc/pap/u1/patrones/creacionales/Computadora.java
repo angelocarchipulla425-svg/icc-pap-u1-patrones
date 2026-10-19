@@ -24,7 +24,7 @@ class Computadora {
         System.out.println("  Memoria RAM: " + memoriaRamGB + "GB");
         System.out.println("  Almacenamiento: " + almacenamientoGB + " GB SSD");
         System.out.println("  Tarjeta Gráfica: " + tarjetaGrafica);
-        System.out.println("Refrigeración Líquida: " + (tieneRefrigeracionLiquida ? "Sí" : "No"));
+        System.out.println("  Refrigeración Líquida: " + (tieneRefrigeracionLiquida ? "Sí" : "No"));
         System.out.println("-------------------------------------------\n");
     }
 
