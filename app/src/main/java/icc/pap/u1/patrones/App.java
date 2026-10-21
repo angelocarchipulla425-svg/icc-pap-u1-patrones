@@ -3,7 +3,12 @@
  */
 package icc.pap.u1.patrones;
 
-import icc.pap.u1.patrones.creacionales.BuilderDemo;
+import java.util.List;
+
+import icc.pap.u1.patrones.creacionales.builder.BuilderDemo;
+import icc.pap.u1.patrones.factoryMethod.Importador;
+import icc.pap.u1.patrones.factoryMethod.ImportadorPuntoComa;
+import icc.pap.u1.patrones.factoryMethod.ImportadorTabulacion;
 
 public class App {
 
@@ -16,6 +21,22 @@ public class App {
         System.out.println("Iniciando Proyecto: icc-pap-u1-patrones");
         
         // Ejecución del patrón creacional Builder
-        runBuilder();
+        // runBuilder();
+
+        runFactoryMethod();
+    }
+
+    private static void runFactoryMethod() {
+        Importador impPC = new ImportadorPuntoComa();
+
+        System.out.println(
+            impPC.importacion(List.of("S01;22.5;C", "S02;18;Cº")));
+
+
+        Importador impTAB = new ImportadorTabulacion();
+
+        System.out.println(
+            impTAB.importacion(List.of("S01   22.5   C", "S02   18   Cº")));
+
     }
 }

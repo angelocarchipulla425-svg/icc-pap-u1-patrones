@@ -1,4 +1,4 @@
-package icc.pap.u1.patrones.creacionales;
+package icc.pap.u1.patrones.creacionales.builder;
 
 class Computadora {
     private String procesador;
