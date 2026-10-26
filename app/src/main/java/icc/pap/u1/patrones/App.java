@@ -6,6 +6,9 @@ package icc.pap.u1.patrones;
 import java.util.List;
 
 import icc.pap.u1.patrones.creacionales.builder.BuilderDemo;
+import icc.pap.u1.patrones.creacionales.builder.Pizza;
+import icc.pap.u1.patrones.creacionales.builder.PizzaBuilder;
+import icc.pap.u1.patrones.creacionales.prototype.PlantillaEmail;
 import icc.pap.u1.patrones.factoryMethod.Importador;
 import icc.pap.u1.patrones.factoryMethod.ImportadorPuntoComa;
 import icc.pap.u1.patrones.factoryMethod.ImportadorTabulacion;
@@ -14,7 +17,20 @@ public class App {
 
     //Método solicitado
     public static void runBuilder() {
-        BuilderDemo.ejecutar();
+        // BuilderDemo.ejecutar();
+        Pizza pizza = new PizzaBuilder()    
+        .addIng("Jamon")
+        .setSize("large")
+        .addIng("Queso")
+        .addIng("Salami")
+        .build();
+
+        Pizza pizza2 = new PizzaBuilder()
+        .addIng("Queso")
+        .build();
+        System.out.println(pizza.descripcion());
+
+        System.out.println(pizza2.descripcion());
     }
 
     public static void main(String[] args) {
@@ -23,7 +39,9 @@ public class App {
         // Ejecución del patrón creacional Builder
         // runBuilder();
 
-        runFactoryMethod();
+        // runFactoryMethod();
+        // runPrototype();
+        runBuilder();
     }
 
     private static void runFactoryMethod() {
@@ -37,6 +55,19 @@ public class App {
 
         System.out.println(
             impTAB.importacion(List.of("S01   22.5   C", "S02   18   Cº")));
+
+    }
+
+
+    private static void runPrototype(){
+        PlantillaEmail pEmail = new PlantillaEmail("Aviso", "Pedido listo");
+
+        PlantillaEmail pEmailSolicitud = pEmail.clone();
+        // PlantillaEmail pEmailSolicitud = pEmail.copia();
+
+        pEmailSolicitud.cambiarAsunto("Solicitud");
+        System.out.println(pEmail);
+        System.out.println(pEmailSolicitud.contenido());
 
     }
 }
