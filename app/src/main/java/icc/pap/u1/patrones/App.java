@@ -8,13 +8,52 @@ import java.util.List;
 import icc.pap.u1.patrones.creacionales.builder.BuilderDemo;
 import icc.pap.u1.patrones.creacionales.builder.Pizza;
 import icc.pap.u1.patrones.creacionales.builder.PizzaBuilder;
+import icc.pap.u1.patrones.creacionales.practica.ConfiguracionSistema;
+import icc.pap.u1.patrones.creacionales.practica.Pedido;
+import icc.pap.u1.patrones.creacionales.practica.PedidoFactory;
 import icc.pap.u1.patrones.creacionales.prototype.PlantillaEmail;
 import icc.pap.u1.patrones.factoryMethod.Importador;
 import icc.pap.u1.patrones.factoryMethod.ImportadorPuntoComa;
 import icc.pap.u1.patrones.factoryMethod.ImportadorTabulacion;
 
 public class App {
+    
+    public static void main(String[] args) {
+        System.out.println("Iniciando Proyecto: icc-pap-u1-patrones");
+        
+        // Ejecución del patrón creacional Builder
+        // runBuilder();
 
+        // runFactoryMethod();
+        // runPrototype();
+        // runBuilder();
+         runPedido();
+    }
+
+    private static void runPedido() {
+        // 1. Obtener la configuración global (Singleton)
+        ConfiguracionSistema config = ConfiguracionSistema.getInstancia();
+        System.out.println("Configuración del sitema Impuesto: " + config.getPorcentajeImpuesto());
+
+        System.out.println();
+
+        // 2. Crear y procesar pedido presencial usando fábrica
+        Pedido pedido1 = PedidoFactory.crearPedido("PRESENCIAL", "P001", "Ana Torres", 100.00);
+        pedido1.procesar();
+
+        System.out.println();
+
+        // 3. Crear y procesar pedido en línea usando fábrica
+        Pedido pedido2 = PedidoFactory.crearPedido("EN_LINEA", "P002", "Juan Pérez", 200.00);
+        pedido2.procesar();
+        
+        System.out.println();
+
+        // 4. Vallidar que la configuración compartida sea la misma instancia
+        ConfiguracionSistema config2 = ConfiguracionSistema.getInstancia();
+        boolean mismaInstancia = (config == config2);
+        System.out.println("configuración compatida: " + mismaInstancia);
+    }
     //Método solicitado
     public static void runBuilder() {
         // BuilderDemo.ejecutar();
@@ -33,16 +72,6 @@ public class App {
         System.out.println(pizza2.descripcion());
     }
 
-    public static void main(String[] args) {
-        System.out.println("Iniciando Proyecto: icc-pap-u1-patrones");
-        
-        // Ejecución del patrón creacional Builder
-        // runBuilder();
-
-        // runFactoryMethod();
-        // runPrototype();
-        runBuilder();
-    }
 
     private static void runFactoryMethod() {
         Importador impPC = new ImportadorPuntoComa();
