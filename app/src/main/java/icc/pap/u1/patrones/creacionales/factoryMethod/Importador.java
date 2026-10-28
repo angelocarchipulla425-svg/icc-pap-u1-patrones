@@ -1,4 +1,4 @@
-package icc.pap.u1.patrones.factoryMethod;
+package icc.pap.u1.patrones.creacionales.factoryMethod;
 
 import java.util.ArrayList;
 import java.util.List;
