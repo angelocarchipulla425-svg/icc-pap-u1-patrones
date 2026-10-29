@@ -6,6 +6,6 @@ package icc.pap.u1.patrones.estructurales.simple.adapter;
 public class CargadorInalambrico {
     
     public void cargarBase(){
-        System.out.println("Cargando de forma inhalámbrica.");
+        System.out.println("Cargando inhalambricamente");
     }
 }
